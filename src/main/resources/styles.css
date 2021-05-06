@@ -1,0 +1,13 @@
+.button:pressed {
+    -fx-background-color: gray;
+}
+
+.button:hover {
+    -fx-border-radius:1;
+    -fx-border-width:3;
+    -fx-border-color: gray;
+}
+
+
+
+
