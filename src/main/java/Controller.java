@@ -1,130 +1,154 @@
 
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyCode;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Slider;
 import javafx.scene.input.KeyEvent;
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Synthesizer;
-import java.util.Arrays;
-import java.util.List;
-
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class Controller {
 
-    public static MidiChannel channel;
+    Model model = new Model();
 
-    Synthesizer synthesizer;
+    @FXML
+    private Slider vol;
 
-    {
-        try {
-            synthesizer = MidiSystem.getSynthesizer();
-            synthesizer.open();
-            synthesizer.loadInstrument(synthesizer.getDefaultSoundbank().getInstruments()[0]);
-            channel = synthesizer.getChannels()[0];
-        } catch (MidiUnavailableException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    void volume() {
+        model.setSliderValue((int) vol.getValue());
     }
-
-    public static class Note {
-        public final KeyCode key;
-        public final int number;
-
-        Note(KeyCode key, int number) {
-            this.key = key;
-            this.number = number;
-        }
-    }
-
-    public static final List<Note> notes = Arrays.asList(
-            new Controller.Note( KeyCode.A, 60),
-            new Controller.Note( KeyCode.W, 61),
-            new Controller.Note( KeyCode.S, 62),
-            new Controller.Note( KeyCode.E, 63),
-            new Controller.Note( KeyCode.D, 64),
-            new Controller.Note( KeyCode.F, 65),
-            new Controller.Note( KeyCode.T, 66),
-            new Controller.Note( KeyCode.G, 67),
-            new Controller.Note( KeyCode.Y, 68),
-            new Controller.Note( KeyCode.H, 69),
-            new Controller.Note( KeyCode.U, 70),
-            new Controller.Note( KeyCode.J, 71),
-            new Controller.Note( KeyCode.K, 72)
-    );
 
     @FXML
     void note(KeyEvent event) {
-        for (Note note : notes) {
+        for (Model.Note note : Model.notes) {
             if (note.key.equals(event.getCode())) {
-                channel.noteOn(note.number, 90);
+                model.getChannel().noteOn(note.number, model.getSliderValue());
             }
         }
     }
 
     @FXML
     void noteOnC() {
-            channel.noteOn(60, 90);
+        model.getChannel().noteOn(60, model.getSliderValue());
     }
 
     @FXML
     void noteOnDb() {
-        channel.noteOn(61, 90);
+        model.getChannel().noteOn(61, model.getSliderValue());
     }
 
     @FXML
     void noteOnD() {
-        channel.noteOn(62, 90);
+        model.getChannel().noteOn(62, model.getSliderValue());
     }
 
     @FXML
     void noteOnEb() {
-        channel.noteOn(63, 90);
+        model.getChannel().noteOn(63, model.getSliderValue());
     }
 
     @FXML
     void noteOnE() {
-        channel.noteOn(64, 90);
+        model.getChannel().noteOn(64, model.getSliderValue());
     }
 
     @FXML
     void noteOnF() {
-        channel.noteOn(65, 90);
+        model.getChannel().noteOn(65, model.getSliderValue());
     }
 
     @FXML
     void noteOnGb() {
-        channel.noteOn(66, 90);
+        model.getChannel().noteOn(66, model.getSliderValue());
     }
 
     @FXML
     void noteOnG() {
-        channel.noteOn(67, 90);
+        model.getChannel().noteOn(67, model.getSliderValue());
     }
 
     @FXML
     void noteOnAb() {
-        channel.noteOn(68, 90);
+        model.getChannel().noteOn(68, model.getSliderValue());
     }
 
     @FXML
     void noteOnA() {
-        channel.noteOn(69, 90);
+        model.getChannel().noteOn(69, model.getSliderValue());
     }
 
     @FXML
     void noteOnBb() {
-        channel.noteOn(70, 90);
+        model.getChannel().noteOn(70, model.getSliderValue());
     }
 
     @FXML
     void noteOnB() {
-        channel.noteOn(71, 90);
+        model.getChannel().noteOn(71, model.getSliderValue());
     }
 
     @FXML
     void noteOnC1() {
-        channel.noteOn(72, 90);
+        model.getChannel().noteOn(72, model.getSliderValue());
+    }
+
+
+    @FXML
+    public void jB() {
+        for (int j : Model.jb) {
+            model.getChannel().noteOn(j, model.getSliderValue());
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            model.getChannel().noteOff(j);
+        }
+    }
+
+    @FXML
+    public void hB() {
+        for (int j : Model.hb) {
+            model.getChannel().noteOn(j, model.getSliderValue());
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            model.getChannel().noteOff(j);
+        }
+    }
+
+    @FXML
+    public void gF() {
+        for (int j : Model.gf) {
+            model.getChannel().noteOn(j, model.getSliderValue());
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            model.getChannel().noteOff(j);
+        }
+    }
+
+    @FXML
+    public void reg() {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/register.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Register");
+            Scene scene = new Scene(root, 521, 329);
+            stage.setScene(scene);
+            String stylesheet = getClass().getResource("/styles.css").toExternalForm();
+            scene.getStylesheets().add(stylesheet);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

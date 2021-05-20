@@ -8,6 +8,12 @@
     -fx-border-color: gray;
 }
 
+.bluebutton:hover {
+    -fx-border-radius:1;
+    -fx-border-width:3;
+    -fx-border-color: CadetBlue;
+}
+
 
 
 
