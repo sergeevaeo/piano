@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0"
+            prefWidth="521.0" style="-fx-background-color: #FFE4B5#FFE4B5;" xmlns="http://javafx.com/javafx/11.0.2"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller2">
+   <TextField layoutX="27.0" layoutY="61.0" onAction="#name" fx:id="login" prefHeight="26.0" prefWidth="185.0">
+      <effect>
+         <DropShadow/>
+      </effect>
+   </TextField>
+   <TextField layoutX="27.0" layoutY="165.0" onAction="#nums" fx:id="melody" onKeyPressed="#press" prefHeight="26.0"
+              prefWidth="226.0">
+      <effect>
+         <DropShadow/>
+      </effect>
+   </TextField>
+   <Label layoutX="21.0" layoutY="32.0" text="Введите имя и нажмите enter:">
+      <font>
+         <Font name="Monospaced Regular" size="13.0"/>
+      </font>
+   </Label>
+   <Label layoutX="32.0" layoutY="119.0" text="Введите последовательность ">
+      <font>
+         <Font name="Monospaced Regular" size="13.0"/>
+      </font>
+   </Label>
+   <Label layoutX="23.0" layoutY="136.0" text="номеров клавиш и нажмите enter">
+      <font>
+         <Font name="Monospaced Regular" size="13.0"/>
+      </font>
+   </Label>
+   <VBox layoutX="318.0" layoutY="35.0" prefHeight="232.0" prefWidth="185.0" spacing="10.0"
+         style="-fx-background-color: #DEB887#DEB887;">
+      <Button mnemonicParsing="false" onAction="#a" fx:id="first" style="-fx-background-color: #AFEEEE#AFEEEE;"
+              styleClass="bluebutton" prefHeight="39.0" prefWidth="191.0" text="Button" visible="false">
+      <effect>
+         <DropShadow/>
+      </effect>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#b" fx:id="second" style="-fx-background-color: #AFEEEE#AFEEEE;"
+              styleClass="bluebutton" prefHeight="39.0" prefWidth="191.0" text="Button" visible="false">
+      <effect>
+         <DropShadow/>
+      </effect>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#c" fx:id="third" style="-fx-background-color: #AFEEEE#AFEEEE;"
+              styleClass="bluebutton" prefHeight="39.0" prefWidth="191.0" text="Button" visible="false">
+         <effect>
+            <DropShadow/>
+         </effect>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#d" fx:id="forth" style="-fx-background-color: #AFEEEE#AFEEEE;"
+              styleClass="bluebutton" prefHeight="39.0" prefWidth="191.0" text="Button" visible="false">
+         <effect>
+            <DropShadow/>
+         </effect>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#e" fx:id="fifth" style="-fx-background-color: #AFEEEE#AFEEEE;"
+              styleClass="bluebutton" prefHeight="39.0" prefWidth="191.0" text="Button" visible="false">
+         <effect>
+            <DropShadow/>
+         </effect>
+      </Button>
+   </VBox>
+</AnchorPane>
